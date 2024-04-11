@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.22...3.25)
 legacy_check()
 
 option(ENABLE_FFMPEG_LOGGING "Enables obs-ffmpeg logging" OFF)
+option(ENABLE_LOADING_AMF "Enables loading amf library at runtime" ON)
 option(ENABLE_NEW_MPEGTS_OUTPUT "Use native SRT/RIST mpegts output" ON)
 
 include(cmake/dependencies.cmake)
@@ -44,6 +45,7 @@ target_sources(
 
 target_compile_options(obs-ffmpeg PRIVATE $<$<COMPILE_LANG_AND_ID:C,AppleClang,Clang>:-Wno-shorten-64-to-32>)
 target_compile_definitions(obs-ffmpeg PRIVATE $<$<BOOL:${ENABLE_FFMPEG_LOGGING}>:ENABLE_FFMPEG_LOGGING>
+                                              $<$<BOOL:${ENABLE_LOADING_AMF}>:ENABLE_LOADING_AMF>
                                               $<$<BOOL:${ENABLE_NEW_MPEGTS_OUTPUT}>:NEW_MPEGTS_OUTPUT>)
 
 target_link_libraries(

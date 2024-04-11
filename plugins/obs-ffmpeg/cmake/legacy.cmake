@@ -1,6 +1,7 @@
 project(obs-ffmpeg)
 
 option(ENABLE_FFMPEG_LOGGING "Enables obs-ffmpeg logging" OFF)
+option(ENABLE_LOADING_AMF "Enables loading amf library at runtime" ON)
 option(ENABLE_NEW_MPEGTS_OUTPUT "Use native SRT/RIST mpegts output" ON)
 option(ENABLE_NATIVE_NVENC "Use native NVENC implementation" ON)
 

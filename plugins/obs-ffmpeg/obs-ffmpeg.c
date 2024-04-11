@@ -336,7 +336,7 @@ extern void obs_nvenc_load(bool h264, bool hevc, bool av1);
 extern void obs_nvenc_unload(void);
 #endif
 
-#ifdef _WIN32
+#if defined(_WIN32) && defined(ENABLE_LOADING_AMF)
 extern void amf_load(void);
 extern void amf_unload(void);
 #endif
@@ -390,7 +390,7 @@ bool obs_module_load(void)
 #endif
 	}
 
-#ifdef _WIN32
+#if defined(_WIN32) && defined(ENABLE_LOADING_AMF)
 	amf_load();
 #endif
 
@@ -438,7 +438,7 @@ void obs_module_unload(void)
 	obs_ffmpeg_unload_logging();
 #endif
 
-#ifdef _WIN32
+#if defined(_WIN32) && defined(ENABLE_LOADING_AMF)
 	amf_unload();
 #endif
 #ifdef OBS_NVENC_AVAILABLE
